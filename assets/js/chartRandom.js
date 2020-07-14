@@ -4,7 +4,6 @@ class RandomChart {
     }
 
     addChart(nameChart, dotes) {
-
         const dots = this.createDotes(nameChart, dotes)
 
         this.state.push({
@@ -13,16 +12,20 @@ class RandomChart {
             borderColor: this.randomColor(),
             data: dots
         })
-    
 
+        const maxDotes = this.maximDotes()
+        this.drawChart(maxDotes)
+    }
 
-        // if (nameChart in this.state) {
-        //     this.state[nameChart].push(parseFloat(dote))
-        // } else {
-        //     this.state[nameChart] = [parseFloat(dote)]
-        // }
-        // console.log(this.state)
-        this.drawChart()
+    maximDotes() {
+        let maximum = 0
+        this.state.map(dotes => {
+            if (maximum < dotes.data.length) {
+                maximum = dotes.data.length
+            }
+        })
+        console.log('MAX IS', maximum)
+        return maximum
     }
 
     createDotes(nameChart, dotes) {
@@ -42,7 +45,7 @@ class RandomChart {
     }
 
     randomColor() {
-        return `rgba(${this.randomRGB()}, ${this.randomRGB()}, ${this.randomRGB()}, 0.2)`
+        return `rgba(${this.randomRGB()}, ${this.randomRGB()}, ${this.randomRGB()}, 0.3)`
     }
 
     resetChart() {
@@ -50,7 +53,9 @@ class RandomChart {
         this.drawChart()
     }
 
-    drawChart() {
+    drawChart(label = [0]) {
+        let lab = label > 0 ? Array.from(Array(label).keys()) : []
+
         const dataState = this.state
         const ctx = document.getElementById('chart').getContext('2d');
         const chart = new Chart(ctx, {
@@ -59,13 +64,11 @@ class RandomChart {
 
             // The data for our dataset
             data: {
-                labels: Array(1000),
+                labels: lab,
                 datasets: dataState
             },
-
-            // Configuration options go here
-            options: {}
         })
+        chart.update()  
     }
 }
 
@@ -82,7 +85,7 @@ form.addEventListener('submit', (ev) => {
     const dotsNumber = document.getElementById('dots_number')
 
     randomChart.addChart(chartName.value, dotsNumber.value)
-    
+
     chartName.value = ''
     dotsNumber.value = ''
 })
@@ -91,6 +94,6 @@ reset.addEventListener('click', () => {
     randomChart.resetChart()
 })
 
-// trigger
+// event trigger
 reset.dispatchEvent(new Event('click'));
 

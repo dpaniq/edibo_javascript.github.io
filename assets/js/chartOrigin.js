@@ -1,24 +1,13 @@
 const form = document.getElementById('origin')
 const reset = document.getElementById('reset')
 
-
 class OriginChart {
     constructor() {
         this.state = []
         this.labels = []
     }
 
-    addLabel() {
-        const time = new Date()
-        console.log(time.getSeconds())
-        // this.labels.push[`${time.getDate()} .${time.getMonth()} . ${time.getFullYear()}`]
-        // console.log(this.labels)
-        this.labels.push('asd')
-    }
-
     addDote(nameChart, dote) {
-        this.addLabel()
-
         if (this.state.some(chart => chart.label == nameChart)) {
             this.state.map(chart => {
                 if (chart.label == nameChart) {
@@ -33,15 +22,6 @@ class OriginChart {
                 data: [dote]
             })
         }
-
-        console.log(this.state)
-
-        // if (nameChart in this.state) {
-        //     this.state[nameChart].push(parseFloat(dote))
-        // } else {
-        //     this.state[nameChart] = [parseFloat(dote)]
-        // }
-        // console.log(this.state)
         this.drawChart()
     }
 
