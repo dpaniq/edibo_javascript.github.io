@@ -59,6 +59,7 @@ class RandomChart {
 
             // The data for our dataset
             data: {
+                labels: Array(1000),
                 datasets: dataState
             },
 
