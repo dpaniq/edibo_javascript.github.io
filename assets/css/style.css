@@ -1,0 +1,84 @@
+/* Blocks */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+.navbar {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 60%;
+    margin-left: -30%;
+    margin-top: -15%;
+  
+    display: flex;
+    flex-direction: row;
+    
+
+}
+
+.navbar div {
+    border: 0.1em dotted #abc0be9f;
+    margin: 1em;
+    padding: 5em;
+    text-align: center;
+
+}
+
+.navbar div a {
+    height: 100%;
+    width: 100%;
+}
+
+.navbar a:hover {
+    background-color: #00000098;
+    color: white
+}
+
+
+.container {
+    margin: 0;
+    margin-top: 3em !important;
+    padding: 0;
+    justify-content: center;
+}
+
+.container p {
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #ebf7f7;
+}
+
+.container .row {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 0;
+}
+
+.container button {
+    margin-top: 4px;
+}
+
+.input-field {
+    text-align: center;
+}
+
+footer {
+    margin-top: 1em;
+}
+
+
+/* End Blocks */
+
+/* Common */
+h2 {
+    color: #80cbc4;
+}
+
+a {
+    text-decoration: none;
+    color: #80cbc4;
+}
