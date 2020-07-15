@@ -6,14 +6,14 @@
 
 1. Create ui/x:
     1. Chart Window
-    2. Navbar
-    3. Footer
-    4. Other pages
-2. Generate data
+    1. Navbar
+    1. Footer
+    1. Other pages
+1. Generate data
     1. Class Chart
-    2. Class Methods
-    3. Functionality
-3. Js Events
+    1. Class Methods
+    1. Functionality
+1. Js Events
     1. Events (click, submit etc)
-    2. "Bad inputs" errors
+    1. "Bad inputs" errors
     
