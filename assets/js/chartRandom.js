@@ -17,8 +17,6 @@ class RandomChart {
     }
 
     maximumDotes() {
-        console.log(this.state)
-
         let maximum = 0
         this.state.map(chart => {
             if (maximum < chart.data.length) {
