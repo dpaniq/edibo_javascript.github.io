@@ -1,4 +1,4 @@
-# edibo_javascript.github.io
+# [edibo_javascript big task](https://dpaniq.github.io/edibo_javascript.github.io/app/pages/chart_random.html)
 
 ### Task
 
