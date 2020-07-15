@@ -4,40 +4,37 @@ class RandomChart {
     }
 
     addChart(nameChart, dotes) {
-        const dots = this.createDotes(nameChart, dotes)
+        const dots = this.createDotes(dotes)
 
         this.state.push({
-            label: nameChart,
+            label: this.state.some(chart => chart.label === nameChart) ? nameChart + '_copy' : nameChart,
             backgroundColor: this.randomColor(),
             borderColor: this.randomColor(),
             data: dots
         })
 
-        const maxDotes = this.maximDotes()
-        this.drawChart(maxDotes)
+        this.drawChart(this.maximumDotes())
     }
 
-    maximDotes() {
+    maximumDotes() {
+        console.log(this.state)
+
         let maximum = 0
-        this.state.map(dotes => {
-            if (maximum < dotes.data.length) {
-                maximum = dotes.data.length
+        this.state.map(chart => {
+            if (maximum < chart.data.length) {
+                maximum = chart.data.length
             }
         })
-        console.log('MAX IS', maximum)
         return maximum
     }
 
-    createDotes(nameChart, dotes) {
-        if (this.state.every(chart => chart.label != nameChart)) {
-
-            const dotesList = []
-            for (let i = 0; i < dotes; i++) {
-                dotesList.push(Math.floor(Math.random() * dotes))
-            }
-
-            return dotesList
+    createDotes(dotes) {
+        const dotesList = []
+        for (let i = 0; i < dotes; i++) {
+            dotesList.push(Math.floor(Math.random() * dotes))
         }
+
+        return dotesList
     }
 
     randomRGB() {
@@ -55,6 +52,7 @@ class RandomChart {
 
     drawChart(label = [0]) {
         let lab = label > 0 ? Array.from(Array(label).keys()) : []
+        console.log(label)
 
         const dataState = this.state
         const ctx = document.getElementById('chart').getContext('2d');
@@ -67,8 +65,22 @@ class RandomChart {
                 labels: lab,
                 datasets: dataState
             },
+            options: {
+                
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: {
+                    duration: 0
+                },
+                hover: {
+                    animationDuration: 0
+                },
+                responsiveAnimationDuration: 0
+            
+            }
         })
-        chart.update()  
+        console.log(chart)
+        chart.update()
     }
 }
 
@@ -77,7 +89,6 @@ const form = document.getElementById('random')
 const reset = document.getElementById('reset')
 
 const randomChart = new RandomChart()
-
 form.addEventListener('submit', (ev) => {
     ev.preventDefault()
 
